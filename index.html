@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmed Portfolio</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"><style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+
+body{
+background:#000;
+color:#fff;
+overflow-x:hidden;
+cursor:none;
+}
+
+.menu-btn{
+position:fixed;
+top:20px;
+left:20px;
+font-size:26px;
+cursor:pointer;
+z-index:1000;
+}
+
+.menu{
+position:fixed;
+top:60px;
+left:20px;
+background:#111;
+padding:12px;
+border-radius:10px;
+display:none;
+flex-direction:column;
+gap:10px;
+z-index:999;
+}
+
+.menu div{
+cursor:pointer;
+}
+
+section{
+display:none;
+min-height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:20px;
+}
+
+.active{display:flex;}
+
+.card{
+background:#111;
+padding:30px;
+border-radius:20px;
+text-align:center;
+width:90%;
+max-width:380px;
+}
+
+.card img{
+width:140px;
+height:140px;
+border-radius:50%;
+animation:float 3s infinite;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+.discord{
+margin-top:15px;
+font-size:30px;
+cursor:pointer;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:15px;
+width:100%;
+max-width:600px;
+}
+
+.lang{
+background:#111;
+padding:15px;
+border-radius:15px;
+text-align:center;
+}
+
+.lang i{
+font-size:28px;
+margin-bottom:8px;
+}
+
+.project{
+background:#111;
+padding:20px;
+border-radius:20px;
+max-width:380px;
+text-align:center;
+}
+
+.project img{
+width:100%;
+border-radius:15px;
+}
+
+.btn{
+display:block;
+margin-top:10px;
+padding:10px;
+background:#fff;
+color:#000;
+text-decoration:none;
+border-radius:10px;
+}
+
+input,textarea{
+width:100%;
+margin-top:10px;
+padding:10px;
+border:none;
+border-radius:10px;
+}
+
+button{
+margin-top:10px;
+padding:10px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.comments{
+margin-top:15px;
+width:100%;
+max-width:380px;
+}
+
+.comment{
+background:#111;
+padding:10px;
+border-radius:10px;
+margin-top:10px;
+}
+
+</style></head><body><div class="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></div><div class="menu" id="menu">
+<div onclick="show('home')">Home</div>
+<div onclick="show('exp')">Experiences</div>
+<div onclick="show('projects')">Projects</div>
+<div onclick="show('feedback')">Feedback</div>
+<div onclick="show('contact')">Contact</div>
+<div onclick="show('payment')">Payment</div>
+</div><section id="home" class="active">
+<div class="card">
+<img src="https://i.ibb.co/gLC8HvRw/fc83e762663e.jpg">
+<h2>Ahmed</h2>
+<p>Developer</p>
+<div class="discord" onclick="window.open('https://discord.com/users/1303062740092588132')">
+<i class="fa-brands fa-discord"></i>
+</div>
+</div>
+</section><section id="exp">
+<div class="grid">
+<div class="lang"><i class="fa-brands fa-html5"></i><p>HTML</p></div>
+<div class="lang"><i class="fa-brands fa-css3-alt"></i><p>CSS</p></div>
+<div class="lang"><i class="fa-brands fa-js"></i><p>JS</p></div>
+<div class="lang"><i class="fa-brands fa-python"></i><p>Python</p></div>
+<div class="lang"><i class="fa-brands fa-java"></i><p>Java</p></div>
+</div>
+</section><section id="projects">
+<div class="project">
+<img src="https://i.ibb.co/9jj6hFw/958d5cb18110.png">
+<h3>Final Bank</h3>
+<p>اقوي بوت بنك في الوطن العربي</p>
+<a class="btn" href="https://discord.com/oauth2/authorize?client_id=1478406907906621696">Add Bot</a>
+<a class="btn" href="https://discord.gg/7a4yDfG9QJ">Support</a>
+</div>
+</section><section id="feedback">
+<div class="card">
+<h3>Feedback</h3>
+<input id="name" placeholder="اسمك">
+<textarea id="msg" placeholder="رسالتك"></textarea>
+<button onclick="send()">Send</button>
+</div>
+<div class="comments" id="comments"></div>
+</section><section id="contact">
+<div class="card">
+<h3>Contact Me</h3>
+<input id="cid" placeholder="Discord ID">
+<textarea id="cmsg" placeholder="رسالتك"></textarea>
+<button onclick="contact()">Send</button>
+<p id="status"></p>
+</div>
+</section><section id="payment">
+<div class="card">
+<h3>Payment Methods</h3>
+<p>Credit BotPro / Vodafone / PayPal / Crypto / Rajhi</p>
+</div>
+</section><script>
+function toggleMenu(){
+let m=document.getElementById("menu");
+m.style.display=m.style.display==="flex"?"none":"flex";
+}
+
+function show(id){
+document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+toggleMenu();
+}
+
+let comments=[];
+function send(){
+let n=document.getElementById("name").value;
+let m=document.getElementById("msg").value;
+if(!n||!m)return;
+comments.unshift({n,m});
+document.getElementById("comments").innerHTML=comments.map(c=>`<div class="comment"><b>${c.n}</b><br>${c.m}</div>`).join("");
+}
+
+function contact(){
+let id=document.getElementById("cid").value;
+let msg=document.getElementById("cmsg").value;
+let status=document.getElementById("status");
+
+if(!/^[0-9]{17,20}$/.test(id)){
+status.innerText="ID غير صحيح";
+return;
+}
+
+status.innerText="تم الإرسال (تجريبي)";
+}
+</script></body>
+</html>
