@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmed Profile</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--Ahmed1:#fff;
+--Ahmed2:#000;
+--Ahmed3:#111;
+--Ahmed4:25px;
+--Ahmed5:20px;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+}
+
+body{
+background:var(--Ahmed2);
+color:var(--Ahmed1);
+overflow:hidden;
+cursor:none;
+}
+
+#Ahmed1{
+position:fixed;
+width:10px;
+height:10px;
+background:var(--Ahmed1);
+border-radius:50%;
+transform:translate(-50%,-50%);
+pointer-events:none;
+}
+
+.Ahmed2{
+position:fixed;
+width:25px;
+height:25px;
+border-radius:50%;
+background:var(--Ahmed1);
+box-shadow:0 0 25px var(--Ahmed1);
+transform:translate(-50%,-50%);
+animation:Ahmed3 .5s forwards;
+}
+
+@keyframes Ahmed3{
+to{
+opacity:0;
+transform:translate(-50%,-50%) scale(6);
+}
+}
+
+.Ahmed4{
+position:fixed;
+top:20px;
+left:20px;
+font-size:28px;
+cursor:pointer;
+z-index:1000;
+}
+
+.Ahmed5{
+position:fixed;
+top:60px;
+left:20px;
+background:var(--Ahmed3);
+padding:15px;
+border-radius:10px;
+display:none;
+flex-direction:column;
+gap:10px;
+z-index:999;
+}
+
+section{
+display:none;
+min-height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:20px;
+opacity:0;
+transform:translateY(20px);
+transition:.4s ease;
+}
+
+section.active{
+display:flex;
+opacity:1;
+transform:translateY(0);
+}
+
+.Ahmed6{
+background:var(--Ahmed3);
+padding:40px;
+border-radius:20px;
+text-align:center;
+width:420px;
+max-width:90%;
+}
+
+.Ahmed6 img{
+width:150px;
+height:150px;
+border-radius:50%;
+animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
+}
+
+.Ahmed7{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-top:15px;
+}
+
+.Ahmed8{
+background:var(--Ahmed3);
+padding:20px;
+border-radius:15px;
+text-align:center;
+}
+
+.Ahmed8 img{
+width:45px;
+margin-bottom:8px;
+animation:float 5s ease-in-out infinite;
+}
+
+.Ahmed9 span{
+position:absolute;
+width:6px;
+height:6px;
+background:var(--Ahmed1);
+opacity:0.15;
+border-radius:50%;
+animation:move linear infinite;
+}
+
+@keyframes move{
+from{transform:translateY(100vh);}
+to{transform:translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div id="Ahmed1"></div>
+<div class="Ahmed9"></div>
+
+<div class="Ahmed4" onclick="Ahmed10()">☰</div>
+
+<div class="Ahmed5" id="menu">
+<div onclick="Ahmed11('home')">Home</div>
+<div onclick="Ahmed11('exp')">Experiences</div>
+<div onclick="Ahmed11('projects')">Projects</div>
+</div>
+
+<section id="home" class="active">
+<div class="Ahmed6">
+<img src="https://i.ibb.co/gLC8HvRw/fc83e762663e.jpg">
+<h1>Ahmed</h1>
+<p>Developer</p>
+</div>
+</section>
+
+<section id="exp">
+<div class="Ahmed6">
+<h2>Experiences</h2>
+
+<div class="Ahmed7">
+
+<div class="Ahmed8">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732212.png">
+<p>HTML</p>
+</div>
+
+<div class="Ahmed8">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732190.png">
+<p>CSS</p>
+</div>
+
+<div class="Ahmed8">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png">
+<p>JS</p>
+</div>
+
+<div class="Ahmed8">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png">
+<p>Python</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="projects">
+<div class="Ahmed6">
+<h2>Projects</h2>
+<p>Final Bank</p>
+<img src="https://i.ibb.co/9jj6hFw/958d5cb18110.png">
+</div>
+</section>
+
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const Ahmed1=document.getElementById("Ahmed1");
+const Ahmed9=document.querySelector(".Ahmed9");
+
+document.addEventListener("mousemove",e=>{
+Ahmed1.style.left=e.clientX+"px";
+Ahmed1.style.top=e.clientY+"px";
+});
+
+document.addEventListener("click",e=>{
+let Ahmed2=document.createElement("div");
+Ahmed2.className="Ahmed2";
+Ahmed2.style.left=e.clientX+"px";
+Ahmed2.style.top=e.clientY+"px";
+document.body.appendChild(Ahmed2);
+setTimeout(()=>Ahmed2.remove(),500);
+});
+
+window.Ahmed10=function(){
+let m=document.getElementById("menu");
+m.style.display=(m.style.display==="flex")?"none":"flex";
+}
+
+window.Ahmed11=function(id){
+
+document.querySelectorAll("section").forEach(Ahmed=>{
+Ahmed.classList.remove("active");
+});
+
+document.getElementById(id).classList.add("active");
+
+document.getElementById("menu").style.display="none";
+}
+
+for(let i=0;i<40;i++){
+let Ahmed12=document.createElement("span");
+Ahmed12.style.left=Math.random()*100+"%";
+Ahmed12.style.animationDuration=(3+Math.random()*8)+"s";
+Ahmed12.style.width=Ahmed12.style.height=(3+Math.random()*6)+"px";
+Ahmed9.appendChild(Ahmed12);
+}
+
+});
+
+</script>
+
+</body>
+</html>
