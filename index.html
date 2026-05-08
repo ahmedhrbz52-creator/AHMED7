@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmed Profile</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--Ahmed1:#fff;
+--Ahmed2:#000;
+--Ahmed3:#111;
+
+--Ahmed4:10px;
+--Ahmed5:150px;
+--Ahmed6:45px;
+--Ahmed7:20px;
+--Ahmed8:25px;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+}
+
+body{
+background:var(--Ahmed2);
+color:var(--Ahmed1);
+overflow-x:hidden;
+cursor:none;
+padding-bottom:40px;
+}
+
+#cursor{
+position:fixed;
+width:var(--Ahmed4);
+height:var(--Ahmed4);
+background:var(--Ahmed1);
+border-radius:50%;
+transform:translate(-50%,-50%);
+pointer-events:none;
+}
+
+.menu-btn{
+position:fixed;
+top:20px;
+left:20px;
+font-size:28px;
+cursor:pointer;
+z-index:1000;
+}
+
+.menu{
+position:fixed;
+top:60px;
+left:20px;
+background:var(--Ahmed3);
+padding:15px;
+border-radius:10px;
+display:none;
+flex-direction:column;
+gap:10px;
+z-index:999;
+}
+
+section{
+display:none;
+min-height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:20px;
+opacity:0;
+transform:translateY(var(--Ahmed8));
+transition:0.4s ease;
+}
+
+section.active{
+display:flex;
+opacity:1;
+transform:translateY(0);
+}
+
+.card{
+background:var(--Ahmed3);
+padding:40px;
+border-radius:20px;
+text-align:center;
+width:420px;
+max-width:90%;
+}
+
+.card img{
+width:var(--Ahmed5);
+height:var(--Ahmed5);
+border-radius:50%;
+margin-bottom:10px;
+animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:15px;
+width:100%;
+max-width:600px;
+margin-top:15px;
+}
+
+.lang{
+background:var(--Ahmed3);
+padding:15px;
+border-radius:15px;
+text-align:center;
+}
+
+.lang img{
+width:var(--Ahmed6);
+height:var(--Ahmed6);
+margin-bottom:8px;
+animation:float 5s ease-in-out infinite;
+}
+
+.project{
+background:var(--Ahmed3);
+padding:20px;
+border-radius:20px;
+width:420px;
+max-width:90%;
+text-align:center;
+}
+
+.project img{
+width:100%;
+border-radius:15px;
+margin-top:10px;
+}
+
+.btn{
+display:block;
+margin-top:10px;
+padding:12px;
+background:var(--Ahmed1);
+color:var(--Ahmed2);
+border-radius:10px;
+text-decoration:none;
+}
+
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+background:var(--Ahmed2);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:15px;
+z-index:999;
+}
+
+.progress-bar{
+width:70%;
+height:18px;
+background:#222;
+border-radius:50px;
+overflow:hidden;
+}
+
+.progress{
+height:100%;
+width:0;
+background:var(--Ahmed1);
+animation:load 2.2s forwards;
+}
+
+@keyframes load{
+to{width:100%;}
+}
+
+.loader-img{
+width:90px;
+height:90px;
+border-radius:50%;
+animation:float 5s ease-in-out infinite;
+}
+
+.bg span{
+position:absolute;
+width:4px;
+height:4px;
+background:var(--Ahmed1);
+opacity:0.2;
+animation:move 10s linear infinite;
+}
+
+@keyframes move{
+from{transform:translateY(100vh);}
+to{transform:translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div id="cursor"></div>
+<div class="bg"></div>
+
+<div id="loader">
+<img class="loader-img" src="https://i.ibb.co/gLC8HvRw/fc83e762663e.jpg">
+<div class="progress-bar"><div class="progress"></div></div>
+</div>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<div class="menu" id="menu">
+<div onclick="show('home')">Home</div>
+<div onclick="show('exp')">Experiences</div>
+<div onclick="show('projects')">Projects</div>
+</div>
+
+<section id="home" class="active">
+<div class="card">
+<img src="https://i.ibb.co/gLC8HvRw/fc83e762663e.jpg">
+<h1>Ahmed</h1>
+<p>Developer</p>
+</div>
+</section>
+
+<section id="exp">
+<div class="card">
+<h2>Experiences</h2>
+
+<div class="grid">
+
+<div class="lang">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732212.png">
+<p>HTML</p>
+</div>
+
+<div class="lang">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732190.png">
+<p>CSS</p>
+</div>
+
+<div class="lang">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png">
+<p>JavaScript</p>
+</div>
+
+<div class="lang">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png">
+<p>Python</p>
+</div>
+
+<div class="lang">
+<img src="https://cdn-icons-png.flaticon.com/512/919/919830.png">
+<p>PHP</p>
+</div>
+
+<div class="lang">
+<img src="https://cdn-icons-png.flaticon.com/512/226/226777.png">
+<p>Java</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="projects">
+<div class="project">
+<h2>Final Bank</h2>
+
+<img src="https://i.ibb.co/9jj6hFw/958d5cb18110.png">
+
+<a class="btn" href="#">Add Bot</a>
+<a class="btn" href="#">Support Server</a>
+</div>
+</section>
+
+<script>
+
+for(let i=0;i<22;i++){
+let s=document.createElement("span");
+s.style.left=Math.random()*100+"%";
+s.style.animationDuration=(5+Math.random()*10)+"s";
+document.querySelector(".bg").appendChild(s);
+}
+
+const cursor=document.getElementById("cursor");
+
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+});
+
+function toggleMenu(){
+let m=document.getElementById("menu");
+m.style.display=(m.style.display==="flex")?"none":"flex";
+}
+
+function show(id){
+document.querySelectorAll("section").forEach(s=>{
+s.classList.remove("active");
+});
+document.getElementById(id).classList.add("active");
+document.getElementById("menu").style.display="none";
+}
+
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+},2200);
+
+</script>
+
+</body>
+</html>
