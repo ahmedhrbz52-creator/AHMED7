@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+        body{background:#000;color:#fff;overflow-x:hidden;cursor:none;padding-bottom:40px;}
+        .menu-btn{position:fixed;top:20px;left:20px;font-size:28px;cursor:pointer;z-index:1000;}
+        .menu{position:fixed;top:60px;left:20px;background:#111;padding:15px;border-radius:10px;display:none;flex-direction:column;gap:10px;}
+        .menu div{cursor:pointer;}
+        .bg span{position:absolute;width:4px;height:4px;background:#fff;opacity:0.2;animation:move 10s linear infinite;}
+        @keyframes move{from{transform:translateY(100vh);}to{transform:translateY(-10vh);}}
+        #cursor{position:fixed;width:10px;height:10px;background:#fff;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;}
+        .click-light{position:fixed;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 0 30px #fff;transform:translate(-50%,-50%);animation:light 0.5s forwards;}
+        @keyframes light{to{opacity:0;transform:translate(-50%,-50%) scale(6);}}
+        section{display:none;min-height:100vh;justify-content:center;align-items:center;flex-direction:column;padding:20px;}
+        .active{display:flex;}
+        .card{background:#111;padding:40px;border-radius:20px;text-align:center;width:400px;max-width:90%;}
+        .card img{width:160px;height:160px;border-radius:50%;animation:float 5s ease-in-out infinite;}
+        @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+        .discord svg{width:40px;fill:#fff;cursor:pointer;margin-top:15px;}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:15px;width:100%;max-width:600px;}
+        .lang{background:#111;padding:15px;border-radius:15px;text-align:center;}
+        .lang img{width:40px;animation:float 5s ease-in-out infinite;}
+        .project{background:#111;padding:20px;border-radius:20px;text-align:center;width:400px;max-width:90%;}
+        .project img{width:100%;border-radius:15px;}
+        .btn{display:block;margin-top:10px;padding:12px;background:#fff;color:#000;border-radius:10px;text-decoration:none;transition:0.3s;}
+        .btn:hover{transform:scale(1.03);}
+        #loader{position:fixed;width:100%;height:100%;background:#000;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:15px;z-index:999;}
+        .progress-bar{width:70%;height:20px;background:#222;border-radius:50px;overflow:hidden;}
+        .progress{height:100%;width:0;background:#fff;animation:load 2.2s forwards;}
+        @keyframes load{to{width:100%;}}
+        .loader-img{width:90px;height:90px;border-radius:50%;animation:float 5s ease-in-out infinite;}
+    </style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div id="cursor"></div>
+
+<div id="loader">
+    <img class="loader-img" src="https://i.ibb.co/gLC8HvRw/fc83e762663e.jpg">
+    <div class="progress-bar"><div class="progress"></div></div>
+</div>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<div class="menu" id="menu">
+    <div onclick="show('home')">Home</div>
+    <div onclick="show('exp')">Experiences</div>
+    <div onclick="show('projects')">Projects</div>
+</div>
+
+<section id="home" class="active">
+    <div class="card">
+        <img src="https://i.ibb.co/gLC8HvRw/fc83e762663e.jpg">
+        <h1>Ahmed</h1>
+        <p style="margin-top:10px;">Developer</p>
+    </div>
+</section>
+
+<section id="exp"></section>
+<section id="projects"></section>
+
+<script>
+eval(atob("CmZvcihsZXQgaT0wO2k8MjI7aSsrKXsKICAgIGxldCBzPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNwYW4iKTsKICAgIHMuc3R5bGUubGVmdD1NYXRoLnJhbmRvbSgpKjEwMCsiJSI7CiAgICBzLnN0eWxlLmFuaW1hdGlvbkR1cmF0aW9uPSg1K01hdGgucmFuZG9tKjEwKSsicyI7CiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCIuYmciKS5hcHBlbmRDaGlsZChzKTsKfQpjb25zdCBjdXJzb3I9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImN1cnNvciIpOwpkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCJtb3VzZW1vdmUiLGU9PntjdXJzb3Iuc3R5bGUubGVmdD1lLmNsaWVudFgrcHgiO2N1cnNvci5zdHlsZS50b3A9ZS5jbGllbnRZK3B4O30pOwpkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCJjbGljayIsZT0+e2xldCBkPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoImRpdiIpO2QuY2xhc3NOYW1lPSJjbGljay1saWdodCI7ZC5zdHlsZS5sZWZ0PWUuY2xpZW50WCsicHgiO2Quc3R5bGUudG9wPWUuY2xpZW50WStyK3B4O2RvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQoZCk7c2V0VGltZW91dCgoKT0+ZHkubmV2KCl9LDUwMCk7fSk7CmZ1bmN0aW9uIHRvZ2dsZU1lbnUoKXtsZXQgbT1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgibWVudSIpO21cLmRpc3BsYXk9bVwub3N0eWxlLmRpc3BsYXk9PT0iZmxleCI/Im5vbmUiOiJmbGV4Ijt9CmZ1bmN0aW9uIHNob3coaWQpe2RvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoInNlY3Rpb24iKS5mb3JFYWNoKHM9PntzLmNsYXNzTGlzdC5yZW1vdmUoImFjdGl2ZSIpO30pO2RvY3VtZW50LmdldEVsZW1lbnRCeUlkKGlkKS5jbGFzc0xpc3QuYWRkKCJhY3RpdmUiKTt9CnNldFRpbWVvdXQoKCk9Pntkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgibG9hZGVyIikuc3R5bGUuZGlzcGxheT0ibm9uZSI7fSwyMjAwKTs="));
+</script>
+
+</body>
+</html>
